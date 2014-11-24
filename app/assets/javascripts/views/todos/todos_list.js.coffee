@@ -1,26 +1,15 @@
-jQuery ->
-  class TodoView extends Backbone.View
-    tagName: "li"
-    initialize: ->
-      console.log("init todoview")
+TodoApp.Views ?= {}
 
-    render: ->
-      console.log("render todoview")
-      $(@el).append('nya-')
-      @
+class TodoApp.Views.TodoListView extends Backbone.View
+  el: "#todo-list"
 
-  class TodoListView extends Backbone.View
-    el: "#todo-list"
+  initialize: ->
+    console.log("init todolistview")
+    @.render()
 
-    initialize: ->
-      console.log("init todolistview")
-      @.render()
-
-    render: ->
-      console.log("render todolistview")
-      _(3).times =>
-        view = new TodoView
-        @$el.append view.render().el
-
-  todoListView = new TodoListView
+  render: ->
+    console.log("render todolistview")
+    _(3).times =>
+      view = new TodoApp.Views.TodoView
+      @$el.append view.render().el
 
