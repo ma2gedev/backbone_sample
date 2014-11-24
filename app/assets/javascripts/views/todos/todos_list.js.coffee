@@ -1,4 +1,14 @@
 jQuery ->
+  class TodoView extends Backbone.View
+    tagName: "li"
+    initialize: ->
+      console.log("init todoview")
+
+    render: ->
+      console.log("render todoview")
+      $(@el).append('nya-')
+      @
+
   class TodoListView extends Backbone.View
     el: "#todo-list"
 
@@ -8,7 +18,9 @@ jQuery ->
 
     render: ->
       console.log("render todolistview")
-      $(@el).append('<li>' + 'nya-' + '</li>')
+      _(3).times =>
+        view = new TodoView
+        @$el.append view.render().el
 
   todoListView = new TodoListView
 
