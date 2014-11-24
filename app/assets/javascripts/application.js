@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require underscore-1.7.0
 //= require backbone-1.1.2
+//= require todos
 //= require_tree .

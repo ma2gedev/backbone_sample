@@ -5,11 +5,12 @@ class TodoApp.Views.TodoListView extends Backbone.View
 
   initialize: ->
     console.log("init todolistview")
-    @.render()
+    @listenTo @collection, 'reset', =>
+      @render()
 
   render: ->
     console.log("render todolistview")
-    _(3).times =>
-      view = new TodoApp.Views.TodoView
+    @collection.each (todo) =>
+      view = new TodoApp.Views.TodoView(model: todo)
       @$el.append view.render().el
 

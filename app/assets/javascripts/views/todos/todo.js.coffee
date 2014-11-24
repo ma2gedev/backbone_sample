@@ -7,5 +7,5 @@ class TodoApp.Views.TodoView extends Backbone.View
 
   render: ->
     console.log("render todoview")
-    $(@el).append('nya-')
+    @$el.html @model.toJSON().name
     @
