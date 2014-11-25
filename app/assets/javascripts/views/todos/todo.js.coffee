@@ -6,6 +6,8 @@ class TodoApp.Views.TodoView extends Backbone.View
     console.log("init todoview")
     @listenTo @model, 'change', =>
       @render()
+    @listenTo @model, 'remove', =>
+      @remove()
 
   render: ->
     console.log("render todoview")
