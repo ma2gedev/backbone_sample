@@ -12,10 +12,3 @@ window.TodoApp =
   Collections: {}
   Views: {}
   Routers: {}
-
-jQuery ->
-  collection = new TodoApp.Collections.TodoCollection()
-  todoListView = new TodoApp.Views.TodoListView(collection: collection)
-  #collection.fetch(reset: true, data: {page: 1, limit: 3})
-  collection.fetch(reset: true)
-  window.TodoApp.Collections.xxx = collection

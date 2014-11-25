@@ -4,26 +4,16 @@
 
 <ul id="todo-list"></ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @todos.each do |todo| %>
-      <tr>
-        <td><%= todo.name %></td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
 
 <%= link_to 'New Todo', new_todo_path %>
+
+<% content_for(:javascript) do %>
+  <script type="text/javascript">
+    $(function() {
+      var collection = new TodoApp.Collections.TodoCollection;
+      var todoListView = new TodoApp.Views.TodoListView({collection: collection});
+      collection.reset(<%= raw render(template: 'todos/index.json.jbuilder') %>);
+    });
+  </script>
+<% end %>
