@@ -6,6 +6,7 @@
 
 <br>
 
+<div id="new-todo"></div>
 <%= link_to 'New Todo', new_todo_path %>
 
 <% content_for(:javascript) do %>
@@ -14,6 +15,8 @@
       var collection = new TodoApp.Collections.TodoCollection;
       var todoListView = new TodoApp.Views.TodoListView({collection: collection});
       collection.reset(<%= raw render(template: 'todos/index.json.jbuilder') %>);
+      var newView = new TodoApp.Views.NewView({collection: collection, el: '#new-todo'});
+      newView.render()
     });
   </script>
 <% end %>
